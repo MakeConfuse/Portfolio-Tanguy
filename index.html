@@ -282,6 +282,71 @@
     </footer>
 
     <script src="js/script.js"></script>
+
+    <!-- DYNAMIC PORTFOLIO SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("portfolio-container");
+            const styles = ["slide-red", "slide-blue", "slide-yellow", "slide-pink", "slide-white"];
+
+            // Helper to format date
+            const formatDate = (dateString) => {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('fr-FR');
+            };
+
+            // 1. Fetch the index of files
+            // Note: In a real static setup without a build step, you must maintain this list
+            // or use a backend function to list files.
+            fetch('data/portfolio/index.json')
+                .then(response => {
+                    if (!response.ok) throw new Error("Index not found");
+                    return response.json();
+                })
+                .then(files => {
+                    // 2. Fetch all JSON files listed
+                    return Promise.all(files.map(file =>
+                        fetch(`data/portfolio/${file}`).then(res => res.json())
+                    ));
+                })
+                .then(items => {
+                    // Sort items by date (newest first)
+                    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                    // 3. Render HTML
+                    items.forEach((item, index) => {
+                        // Determine style and layout
+                        const styleClass = styles[index % styles.length];
+                        const isReverse = index % 2 !== 0 ? "reverse" : "";
+
+                        // Build HTML
+                        const html = `
+                            <section class="portfolio-slide ${styleClass} visible">
+                                <div class="slide-inner ${isReverse}">
+                                    <div class="slide-media">
+                                        <img src="${item.image}" alt="${item.title}" style="--img-size: 80%;">
+                                    </div>
+                                    <div class="slide-text glass-box">
+                                        <h3 class="art-title">${item.title}</h3>
+                                        <p class="art-desc">
+                                            ${item.description}
+                                        </p>
+                                        <span class="art-date">${formatDate(item.date)}</span>
+                                    </div>
+                                </div>
+                            </section>
+                        `;
+
+                        // Append to container
+                        container.insertAdjacentHTML('beforeend', html);
+                    });
+                })
+                .catch(err => {
+                    console.error("Error loading portfolio:", err);
+                    container.innerHTML = "<p style='text-align:center; padding:2rem;'>Veuillez charger les projets...</p>";
+                });
+        });
+    </script>
 </body>
 
 </html>

@@ -344,7 +344,7 @@ nav a.active {
 }
 
 .slide-red {
-    --slide-bg: url('../Media/IMG_0841.jpg');
+    --slide-bg: url('../Media/IMG_0841.webp');
     --grad-start: rgba(255, 77, 109, 0.8);
     --grad-end: rgba(255, 77, 109, 0.2);
     color: white;
@@ -352,7 +352,7 @@ nav a.active {
 }
 
 .slide-yellow {
-    --slide-bg: url('../Media/IMG_2401.jpg');
+    --slide-bg: url('../Media/IMG_2401.webp ');
     --grad-start: rgba(255, 200, 0, 0.8);
     --grad-end: rgba(255, 200, 0, 0.2);
     color: var(--color-dark);
@@ -369,7 +369,7 @@ nav a.active {
 }
 
 .slide-blue {
-    --slide-bg: url('../Media/IMG_1726.JPG');
+    --slide-bg: url('../Media/IMG_1726.webp');
     --grad-start: rgba(58, 134, 255, 0.8);
     --grad-end: rgba(58, 134, 255, 0.2);
     color: white;
