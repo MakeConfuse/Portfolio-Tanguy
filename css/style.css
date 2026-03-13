@@ -1446,3 +1446,54 @@ footer {
 .slide-white .centered-bottom:hover {
     transform: translateY(-5px);
 }
+
+/* --- COMPACT MOBILE FIXES --- */
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 2rem 1.5rem !important;
+        width: 95% !important;
+    }
+    
+    .contact-methods {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+    
+    .method-item .icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .method-item h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .method-item p {
+        font-size: 1.2rem !important;
+    }
+    
+    .social-summary h3 {
+        margin-bottom: 1.5rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .socials-horizontal {
+        gap: 1rem !important;
+    }
+    
+    .social-link img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .page-title {
+        font-size: 3rem !important;
+        margin: 1.5rem 0 !important;
+    }
+    
+    .contact-page {
+        padding-top: 100px !important;
+    }
+}
