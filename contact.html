@@ -5,12 +5,457 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Tanguy Besnard</title>
+    <meta name="description" content="Contactez Tanguy Besnard, dessinateur graphiste. Disponible pour collaborations, commissions et projets créatifs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Jost:wght@300;400;500;600&family=Lemon&family=Passion+One:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── PAGE CONTACT : styles spécifiques ─────────────────────── */
+
+        .contact-page {
+            padding: 0;
+            display: block;
+        }
+
+        /* ── HERO ─────────────────────────────────────────────── */
+        .contact-hero {
+            position: relative;
+            min-height: 55vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0 5% 5rem;
+            /* 80% wide, centred, rounded like the navbar */
+            width: 90%;
+            max-width: 90%;
+            margin: 30px auto 0;
+            border-radius: 28px;
+        }
+
+        .contact-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: none;
+            background: transparent;
+            z-index: 0;
+        }
+
+        .contact-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: none;
+            z-index: 1;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .contact-hero-tag {
+            display: inline-block;
+            background: var(--color-orange);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 0.4rem 1.2rem;
+            border-radius: 99px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            line-height: 0.9;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-hero p {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── AVAILABILITY STRIP ─────────────────────────────────────── */
+        .availability-strip {
+            background: var(--color-orange);
+            padding: 1.2rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .availability-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .availability-text {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ── MAIN CONTACT LAYOUT ────────────────────────────────────── */
+        .contact-body {
+            padding: 6rem 5% 8rem;
+            width: 90%;
+            max-width: 90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: stretch;
+        }
+
+        /* ── COLONNE GAUCHE ─────────────────────────────────────────── */
+        .contact-left h2 {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .contact-left h2 span {
+            color: var(--color-orange);
+        }
+
+        .contact-left > p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.6;
+            margin-bottom: 3rem;
+        }
+
+        /* Coordonnées */
+        .contact-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-entry {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-entry:hover {
+            background: rgba(255, 107, 74, 0.08);
+            border-color: rgba(255, 107, 74, 0.3);
+            transform: translateX(6px);
+        }
+
+        .entry-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--color-orange);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(255, 107, 74, 0.4);
+        }
+
+        .entry-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+        .entry-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .entry-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.45;
+        }
+
+        .entry-value {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--color-white);
+        }
+
+        /* Bouton PDF */
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.2rem;
+            background: var(--color-orange);
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 999px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(255, 107, 74, 0.35);
+            margin-bottom: 3rem;
+        }
+
+        .btn-download-pdf svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-download-pdf:hover {
+            background: transparent;
+            border-color: var(--color-orange);
+            color: var(--color-orange);
+            box-shadow: none;
+        }
+
+        .btn-download-pdf:hover svg {
+            transform: translateY(3px);
+        }
+
+        /* Réseaux sociaux */
+        .contact-socials-title {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            margin-bottom: 1.4rem;
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+
+        .contact-social-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .contact-social-btn .social-icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-social-btn img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: grayscale(1) invert(1);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .contact-social-btn span {
+            display: block;
+            font-size: 0.78rem;
+            opacity: 0.6;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-social-btn:hover .social-icon-wrap {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-4px);
+        }
+
+        .contact-social-btn:hover img {
+            filter: grayscale(0) invert(0);
+            opacity: 1;
+        }
+
+        .contact-social-btn:hover span {
+            opacity: 1;
+            color: var(--color-white);
+        }
+
+        /* ── COLONNE DROITE : visuel illustré ───────────────────────── */
+        .contact-right-visual {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-artwork-stack {
+            position: relative;
+            flex: 1;
+            min-height: 500px;
+        }
+
+        .artwork-card {
+            position: absolute;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .artwork-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .artwork-card--main {
+            width: 72%;
+            top: 0;
+            bottom: 120px;
+            right: 0;
+            z-index: 2;
+        }
+
+        .artwork-card--secondary {
+            width: 52%;
+            bottom: 0;
+            top: 30%;
+            left: 0;
+            z-index: 3;
+            border: 4px solid var(--color-dark);
+        }
+
+        .artwork-card--accent {
+            width: 36%;
+            height: 180px;
+            top: 42%;
+            left: 26%;
+            z-index: 1;
+            opacity: 0.65;
+        }
+
+        /* Badge flottant */
+        .contact-float-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 0;
+            z-index: 10;
+            background: var(--color-dark);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .float-badge-number {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--color-orange);
+            line-height: 1;
+        }
+
+        .float-badge-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .contact-body {
+                grid-template-columns: 1fr;
+                align-items: start;
+                gap: 3rem;
+            }
+
+            .contact-artwork-stack {
+                min-height: 320px;
+            }
+
+            .artwork-card--main {
+                width: 65%;
+                bottom: 100px;
+            }
+
+            .artwork-card--secondary {
+                width: 50%;
+                top: 35%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contact-hero h1 { font-size: 3rem; }
+            .contact-body { padding: 4rem 5% 6rem; }
+            .contact-artwork-stack { min-height: 240px; }
+            .artwork-card--main { bottom: 80px; }
+            .artwork-card--secondary { top: 40%; }
+            .artwork-card--accent { display: none; }
+        }
+    </style>
 </head>
 
 <body class="subpage">
@@ -29,43 +474,108 @@
     </nav>
 
     <main class="contact-page">
-        <h1 class="page-title">ME CONTACTER</h1>
 
-        <div class="contact-card glass-box">
-            <div class="contact-methods">
-                <div class="method-item">
-                    <span class="icon">📞</span>
-                    <h3>Téléphone</h3>
-                    <p>+33 6 12 34 56 78</p>
-                </div>
-                <div class="method-item">
-                    <span class="icon">✉️</span>
-                    <h3>Email</h3>
-                    <p>tanguy.besnard@email.com</p>
-                </div>
+        <!-- HERO -->
+        <section class="contact-hero">
+            <div class="contact-hero-bg"></div>
+            <div class="contact-hero-overlay"></div>
+            <div class="contact-hero-content">
+                <span class="contact-hero-tag">Disponible pour de nouveaux projets</span>
+                <h1>ME<br>CONTACTER</h1>
+                <p>Dessinateur graphiste passionné, je suis ouvert à toute collaboration artistique, commande personnalisée ou projet créatif.</p>
             </div>
+        </section>
 
-            <div class="social-summary">
-                <h3>Réseaux Sociaux</h3>
-                <div class="socials-horizontal">
-                    <a href="#" class="social-link">
-                        <img src="Media/facebook.webp" alt="Facebook">
+        <!-- BANDEAU DISPONIBILITÉ -->
+        <div class="availability-strip">
+            <div class="availability-dot"></div>
+            <span class="availability-text">Actuellement disponible</span>
+        </div>
+
+        <!-- CORPS DE PAGE : infos + visuel -->
+        <div class="contact-body">
+
+            <!-- Colonne gauche : coordonnées -->
+            <div class="contact-left">
+                <h2>Travaillons<br><span>ensemble.</span></h2>
+                <p>N'hésitez pas à me contacter pour discuter de votre projet, qu'il s'agisse d'une illustration, d'une affiche ou d'un concept art.</p>
+
+                <div class="contact-entries">
+                    <a href="tel:+33612345678" class="contact-entry" id="contact-phone">
+                        <span class="entry-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l1.27-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <div class="entry-text">
+                            <span class="entry-label">Téléphone</span>
+                            <span class="entry-value">+33 6 12 34 56 78</span>
+                        </div>
+                    </a>
+                    <a href="mailto:tanguy.besnard@email.com" class="contact-entry" id="contact-email">
+                        <span class="entry-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <div class="entry-text">
+                            <span class="entry-label">Email</span>
+                            <span class="entry-value">tanguy.besnard@email.com</span>
+                        </div>
+                    </a>
+                </div>
+
+                <a href="Media/Portfolio PDF.pdf" download="Portfolio_Tanguy_Besnard.pdf" class="btn-download-pdf" id="btn-download-portfolio">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Télécharger mon portfolio
+                </a>
+
+                <p class="contact-socials-title">Me retrouver sur</p>
+                <div class="contact-socials" id="contact-socials">
+                    <a href="#" class="contact-social-btn" id="social-facebook">
+                        <div class="social-icon-wrap">
+                            <img src="Media/facebook.webp" alt="Facebook">
+                        </div>
                         <span>Facebook</span>
                     </a>
-                    <a href="#" class="social-link">
-                        <img src="Media/instagram.webp" alt="Instagram">
+                    <a href="#" class="contact-social-btn" id="social-instagram">
+                        <div class="social-icon-wrap">
+                            <img src="Media/instagram.webp" alt="Instagram">
+                        </div>
                         <span>Instagram</span>
                     </a>
-                    <a href="#" class="social-link">
-                        <img src="Media/linkedin.webp" alt="LinkedIn">
+                    <a href="#" class="contact-social-btn" id="social-linkedin">
+                        <div class="social-icon-wrap">
+                            <img src="Media/linkedin.webp" alt="LinkedIn">
+                        </div>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="#" class="social-link">
-                        <img src="Media/behance.webp" alt="Behance">
+                    <a href="#" class="contact-social-btn" id="social-behance">
+                        <div class="social-icon-wrap">
+                            <img src="Media/behance.webp" alt="Behance">
+                        </div>
                         <span>Behance</span>
                     </a>
                 </div>
             </div>
+
+            <!-- Colonne droite : stack d'œuvres illustré -->
+            <div class="contact-right-visual">
+                <div class="contact-artwork-stack">
+                    <div class="artwork-card artwork-card--main">
+                        <img src="Media/Numérique 8.webp" alt="Illustration numérique">
+                    </div>
+                    <div class="artwork-card artwork-card--secondary">
+                        <img src="Media/Tradi 3.webp" alt="Dessin traditionnel">
+                    </div>
+                    <div class="artwork-card artwork-card--accent">
+                        <img src="Media/Numérique 6.webp" alt="Oeuvre numérique">
+                    </div>
+                </div>
+
+                <!-- Badge flottant stat -->
+                <div class="contact-float-badge">
+                    <span class="float-badge-number">10+</span>
+                    <span class="float-badge-label">Ans de<br>passion</span>
+                </div>
+            </div>
+
         </div>
     </main>
 
